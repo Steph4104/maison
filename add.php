@@ -29,51 +29,90 @@
 
   <article class="grid-container">
     <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
-  <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-?>
+ 
 </ul>
-<form>
+<form action='save_data.php' method="POST">
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
       <div class="medium-6 cell">
         <label>Lien
-          <input type="text" placeholder="lien">
+          <input type="url" name='lien' placeholder="lien">
         </label>
       </div>
       <div class="medium-6 cell">
         <label>Prix
-          <input type="text" placeholder="prix">
+          <input type="number" name='prix' placeholder="prix">
         </label>
       </div>
       <div class="medium-6 cell">
         <label>Nmb de chambre
-          <input type="text" placeholder="chambre">
+          <input type="number" name='chambre' placeholder="chambre">
         </label>
       </div>
       <div class="medium-6 cell">
         <label>Salle de bain
-          <input type="text" placeholder="salle de bain">
+          <input type="number" name='bain' placeholder="salle de bain">
         </label>
       </div>
       <div class="medium-6 cell">
-        <label>Prix
-          <input type="text" placeholder="prix">
+        <label>Temps en autobus
+          <input type="number" name="autobus" placeholder="autobus">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Surface habitable
+          <input type="number" name='habitable' placeholder="p2">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Adresse
+          <input type="text" name='adresse' placeholder="adresse">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        
+        <label for="exampleFileUpload" class="button">Upload File</label>
+<input type="file" id="exampleFileUpload" class="show-for-sr">
+       
+      </div>
+      <div class="medium-6 cell">
+        <label>Taxes municipales
+          <input type="number" name='taxe_m' placeholder="taxe">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Taxes scolaires
+          <input type="number" name='taxe_s' placeholder="taxe">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Inclusion
+        <textarea name='inclusion' placeholder="None"></textarea>
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Exclusion
+        <textarea name='exclusion' placeholder="None"></textarea>
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Commentaires
+        <textarea name='commentaire' placeholder="None"></textarea>
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Point pour
+        <textarea name='pour' placeholder="None"></textarea>
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Point contre
+        <textarea name='contre' placeholder="None"></textarea>
         </label>
       </div>
     </div>
   </div>
+  <input type="submit" class="button" name='submit' value="Submit">
 </form>
 </div>
 
