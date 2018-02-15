@@ -34,7 +34,21 @@ if ($conn->connect_error) {
     } else {
         error_log( "Error: " . $sql . "<br>" . $conn->error);
         echo "Error: " . $sql . "<br>" . $conn->error;
-        echo "Something went wrong :(";
+        echo "Something went wrong :( (Info)";
+    }
+    $last_id = $conn->insert_id;
+    $max = mysqli_query($conn,"SELECT MAX(display_order) FROM `sort_save` ");
+    $row = mysqli_fetch_array($max);
+
+    $sql2 = "INSERT INTO sort_save (user_id, display_order) VALUES ('$last_id', $row[0]+1)";
+
+    if ($conn->query($sql2) === TRUE) {
+        error_log("New record created successfully");
+        header('Location: add.php');
+    } else {
+        error_log( "Error: " . $sql2 . "<br>" . $conn->error);
+        echo "Error: " . $sql2 . "<br>" . $conn->error;
+        echo "Something went wrong :( (order)";
     }
 
 ?>
