@@ -25,12 +25,46 @@ if ($conn->connect_error) {
     $pour = ($_POST['pour']) ? $_POST['pour'] : 'N/A';
     $contre = ($_POST['contre']) ? $_POST['contre'] : 'N/A';
     $comment = ($_POST['commentaire']) ? $_POST['commentaire'] : 'N/A';
+
+if($_FILES["fileToUpload"]){
+    $target_dir = "image_house/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+
+        if ($_FILES["fileToUpload"]["size"] == 0) {
+            echo "Sorry, your file is too large.";
+            error_log("Sorry, your file is too large.");
+            $uploadOk = 0;
+        }
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        }
+        
+        if ($uploadOk == 0) {
+            error_log("Error, can't upload");
+            header('Location: add.php');
+            exit;
     
-   $sql = "INSERT INTO info_maison (link,chambre,prix,habitable,img,taxe_s,taxe_m,bain,autobus,adresse,inclusion,exclusion,pour,contre,autre) VALUES ('$lien','$chambre','$prix','$habitable','','$taxe_s','$taxe_m','$bain','$autobus','$adresse','$inclusion','$exclusion','$pour','$contre','$comment')";
+        }else{
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            }
+        }
+    }
+}else{
+    $target_file = 'N/A';
+}
+    
+   $sql = "INSERT INTO info_maison (link,chambre,prix,habitable,img,taxe_s,taxe_m,bain,autobus,adresse,inclusion,exclusion,pour,contre,autre) VALUES ('$lien','$chambre','$prix','$habitable','$target_file','$taxe_s','$taxe_m','$bain','$autobus','$adresse','$inclusion','$exclusion','$pour','$contre','$comment')";
 
     if ($conn->query($sql) === TRUE) {
         error_log("New record created successfully");
-        header('Location: add.php');
+        
     } else {
         error_log( "Error: " . $sql . "<br>" . $conn->error);
         echo "Error: " . $sql . "<br>" . $conn->error;

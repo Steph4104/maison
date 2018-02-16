@@ -31,7 +31,7 @@
     <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
  
 </ul>
-<form action='save_data.php' method="POST">
+<form action='save_data.php' method="POST" enctype="multipart/form-data">
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
       <div class="medium-6 cell">
@@ -70,9 +70,8 @@
         </label>
       </div>
       <div class="medium-6 cell">
-        
-        <label for="exampleFileUpload" class="button">Upload File</label>
-<input type="file" id="exampleFileUpload" class="show-for-sr">
+        <label for="fileToUpload">Upload an image</label>
+        <input type="file" name="fileToUpload" id="fileToUpload">
        
       </div>
       <div class="medium-6 cell">

@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
      <img src="http://via.placeholder.com/350x350">
      <div class="card-section">
        <h4>Maison</h4>
-       <p>'.$row['todo'].'</p>
+       <p>'.$row['user_id'].'</p>
      </div>
    </div>
 </li>';
