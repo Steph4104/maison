@@ -26,9 +26,16 @@
     </ul>
   </div>
 </div>
-
   <article class="grid-container">
-    <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
+  <button class="trigger" style="display:none;">Click here to trigger the modal!</button>
+  <div class="modal">
+      <div class="modal-content">
+          <span class="close-button">&times;</span>
+
+          <p id='dynamic-content'> </p>
+      </div>
+  </div>
+  <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
   <?php
 $servername = "localhost";
 $username = "root";
@@ -42,7 +49,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo'<ul id="sortable" class="sortable ui-sortable">';
-$sql = "SELECT * FROM sort_save ORDER BY display_order ASC ";
+$sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id ORDER BY sort.display_order ASC ";
+
 $result = $conn->query($sql);
 $test = 0;
 if ($result->num_rows > 0) {
@@ -51,10 +59,12 @@ if ($result->num_rows > 0) {
       
      echo'<li id="item-'.$row['id'].'">
      <div class="card">
-     <img src="http://via.placeholder.com/350x350">
+     <img src="'.$row['img'].'">
      <div class="card-section">
-       <h4>Maison</h4>
-       <p>'.$row['user_id'].'</p>
+       <h5>Adresse: '.$row['adresse'].'</h5>
+       <h6>Prix: '.$row['prix'].'</h6>
+       <p><button class="button info" id="'.$row['user_id'].'" style="float:left" >Info</button></p>
+       <p><a href="add.php?action=edit&house_id='.$row['user_id'].'"style="float:right" class="button">Edit</a></p>
      </div>
    </div>
 </li>';
@@ -66,10 +76,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 </ul>
-
 </div>
-
-
   </article>
 
 </div>
@@ -78,6 +85,8 @@ $conn->close();
 <!-- jQuery UI -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="js/foundation.js"> </script>
+<script src="js/app.js"> </script>
+
 <script>
  $(document).ready(function () {
   $('ul').sortable({
@@ -93,10 +102,37 @@ $conn->close();
 }
   });
 
-  $(document).foundation();
+  
+  $(".info").on('click',function () {
+    var $modal = $('#myModal');
+    var id = event.target.id;
+
+$.ajax({
+    type: "POST",
+    url: 'modal.php',
+    data: {
+        'ID': id
+    },
+  success: function(resp){
+    toggleModal();
+   // alert(resp);
+    $('#dynamic-content').html(resp);
+
+   // $modal.html(resp).foundation('open');
+    //  $('html, body').animate({
+    //      scrollTop: $("#item-"+id).offset().top
+    //  });
+    
+},     
+error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+  });
 });
 
 
-     </script>
+});
+  </script>
 
 </html>

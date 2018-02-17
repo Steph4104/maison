@@ -68,8 +68,8 @@ header {width: 100%; float: left; padding: 175px 0; background:  url(../images/m
 *
 *  -------------------------- */
 ul.sortable {width: 100%; float: left; margin: 20px 0; list-style: none; position: relative !important;}
-ul.sortable li {/*height: 200px;*/ float: left; margin: 0 7px 7px 0; border: 2px solid #fff; cursor: move;}
-ul.sortable li img {height: 100%; float: left;}
+ul.sortable li {height: 490px; float: left; margin: 0 7px 7px 0; border: 2px solid #fff; cursor: move;width: 32%;}
+ul.sortable li img {/*height: 100%;*/ float: left;}
 ul.sortable li.ui-sortable-helper {border-color: #3498db;}
 
 
@@ -115,3 +115,46 @@ a.download {display:inline-block; padding: 13px 22px; color: #fff; background: #
 *
 *  -------------------------- */
 footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background: #e3e3e3; color: #aaa; font-family: 'Montserrat'; text-align: center; font-size: 12px;}
+
+.modal {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+
+
+}
+.modal-content {
+	position: absolute;
+	top: 65%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 1rem 1.5rem;
+	border-radius: 0.5rem;
+}
+.close-button {
+	float: right;
+	width: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	background-color: lightgray;
+}
+.close-button:hover {
+	background-color: darkgray;
+}
+.show-modal {
+	opacity: 1;
+	visibility: visible;
+	transform: scaleX(1.0) scaleY(1.0);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
