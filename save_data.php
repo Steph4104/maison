@@ -59,7 +59,7 @@ if($_FILES["fileToUpload"]){
 }else{
     $target_file = 'N/A';
 }
-    
+$inclusion = mysqli_real_escape_string($conn, $inclusion);
    $sql = "INSERT INTO info_maison (link,chambre,prix,habitable,img,taxe_s,taxe_m,bain,autobus,adresse,inclusion,exclusion,pour,contre,autre) VALUES ('$lien','$chambre','$prix','$habitable','$target_file','$taxe_s','$taxe_m','$bain','$autobus','$adresse','$inclusion','$exclusion','$pour','$contre','$comment')";
 
     if ($conn->query($sql) === TRUE) {
