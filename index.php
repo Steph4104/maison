@@ -35,7 +35,7 @@
           <p id='dynamic-content'> </p>
       </div>
   </div>
-  <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
+  <div class="row small-up-2 medium-up-3 large-up-4">
   <?php
 $servername = "localhost";
 $username = "root";
@@ -48,7 +48,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo'<ul id="sortable" class="sortable ui-sortable container float">';
+echo'<ul id="sortable" class="sortable ui-sortable colomn">';
 $sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id ORDER BY sort.display_order ASC ";
 
 $result = $conn->query($sql);
@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-     echo'<div class="card"><li id="item-'.$row['id'].'" class="item">
+     echo'<li id="item-'.$row['id'].'" class="item">
      
      <img src="'.$row['img'].'">
      <div class="card-section">
@@ -67,7 +67,7 @@ if ($result->num_rows > 0) {
        <p><a href="add.php?action=edit&house_id='.$row['user_id'].'"style="float:right" class="button">Edit</a></p>
      </div>
   
-</li> </div>';
+</li>';
 
     }
 } else {
