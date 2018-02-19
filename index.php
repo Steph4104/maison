@@ -58,11 +58,12 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
       
      echo'<li id="item-'.$row['id'].'" class="item">
-     
+     <div class="imgwrap">
      <img src="'.$row['img'].'">
+</div>
      <div class="card-section">
-       <h5>Adresse: '.$row['adresse'].'</h5>
-       <h6>Prix: '.$row['prix'].'</h6>
+       <h5 class="limit-two-line">'.$row['adresse'].'</h5>
+       <h6>'.$row['prix'].'</h6>
        <p><button class="button info" id="'.$row['user_id'].'" style="float:left" >Info</button></p>
        <p><a href="add.php?action=edit&house_id='.$row['user_id'].'"style="float:right" class="button">Edit</a></p>
      </div>
