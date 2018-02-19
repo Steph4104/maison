@@ -48,7 +48,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo'<ul id="sortable" class="sortable ui-sortable">';
+echo'<ul id="sortable" class="sortable ui-sortable container float">';
 $sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id ORDER BY sort.display_order ASC ";
 
 $result = $conn->query($sql);
@@ -57,8 +57,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-     echo'<li id="item-'.$row['id'].'">
-     <div class="card">
+     echo'<div class="card"><li id="item-'.$row['id'].'" class="item">
+     
      <img src="'.$row['img'].'">
      <div class="card-section">
        <h5>Adresse: '.$row['adresse'].'</h5>
@@ -66,8 +66,8 @@ if ($result->num_rows > 0) {
        <p><button class="button info" id="'.$row['user_id'].'" style="float:left" >Info</button></p>
        <p><a href="add.php?action=edit&house_id='.$row['user_id'].'"style="float:right" class="button">Edit</a></p>
      </div>
-   </div>
-</li>';
+  
+</li> </div>';
 
     }
 } else {

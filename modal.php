@@ -19,7 +19,7 @@ $id =$_POST['ID'];
 ?>
 
 <?php echo '<img src="'.$info['img'].'" >'; ?>
-
+<div style='overflow-x:auto;'>
 <table>
   <thead>
     <tr>
@@ -86,5 +86,5 @@ $id =$_POST['ID'];
     </tr>
   </tbody>
 </table>
-
+</div>
   

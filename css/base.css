@@ -68,7 +68,7 @@ header {width: 100%; float: left; padding: 175px 0; background:  url(../images/m
 *
 *  -------------------------- */
 ul.sortable {width: 100%; float: left; margin: 20px 0; list-style: none; position: relative !important;}
-ul.sortable li {height: 490px; float: left; margin: 0 7px 7px 0; border: 2px solid #fff; cursor: move;width: 32%;}
+ul.sortable li {height: 100%; float: left; border: 2px solid #fff; cursor: move;}
 ul.sortable li img {/*height: 100%;*/ float: left;}
 ul.sortable li.ui-sortable-helper {border-color: #3498db;}
 
@@ -132,13 +132,18 @@ footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background:
 
 }
 .modal-content {
-	position: absolute;
+	/* position: absolute;
 	top: 65%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: white;
 	padding: 1rem 1.5rem;
-	border-radius: 0.5rem;
+	border-radius: 0.5rem; */
+	background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
 }
 .close-button {
 	float: right;
@@ -158,3 +163,38 @@ footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background:
 	transform: scaleX(1.0) scaleY(1.0);
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+
+.container {
+	list-style:none;
+	margin: 0;
+	padding: 0;
+  }
+
+  /*float layout*/
+.float {
+	max-width: 1200px;
+	margin: 0 auto;
+  }
+  .float:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+  }
+  .float-item {
+	float: left;
+  }
+
+  .item {
+	padding: 5px;
+	width: 200px;
+	height: 150px;
+	margin: 10px;
+	
+	line-height: 150px;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	font-size: 3em;
+	text-align: center;
+  }
