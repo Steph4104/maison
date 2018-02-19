@@ -67,6 +67,7 @@ if(isset($_GET['house_id'])){
   $info['autobus'] = '';
   $info['habitable'] = '';
   $info['adresse'] = '';
+  $info['year'] = '';  
   $info['img'] = '';
   $info['taxe_m'] = '';
   $info['taxe_s'] = '';
@@ -115,6 +116,11 @@ if(isset($_GET['house_id'])){
       <div class="medium-6 cell">
         <label>Adresse
           <input type="text" name='adresse' placeholder="adresse"  value="<?php echo $info['adresse']; ?>">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Année de construction
+          <input type="number" name='year' placeholder="Année"  value="<?php echo $info['year']; ?>">
         </label>
       </div>
       <div class="medium-6 cell">

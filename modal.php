@@ -49,6 +49,10 @@ $id =$_POST['ID'];
       <td><?php echo $info['habitable']; ?></td>
     </tr>
     <tr>
+      <td>Année</td>
+      <td><?php echo $info['year']; ?></td>
+    </tr>
+    <tr>
       <td>taxe_s</td>
       <td><?php echo $info['taxe_s']; ?></td>
     </tr>
