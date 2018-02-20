@@ -166,6 +166,11 @@ if(isset($_GET['house_id'])){
     </div>
   </div>
   <input type="submit" class="button" name='submit' value="Submit">
+  <?php
+  if (isset($id)){
+    echo '<a href="dispo.php?id='.$id.'" style="float:right;" class="button alert">Sold</a>';
+  }
+  ?>
 </form>
 </div>
 

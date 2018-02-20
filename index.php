@@ -49,7 +49,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo'<ul id="sortable" class="sortable ui-sortable colomn">';
-$sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id ORDER BY sort.display_order ASC ";
+$sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id AND info.sold = 'dispo' ORDER BY sort.display_order ASC ";
 
 $result = $conn->query($sql);
 $test = 0;
@@ -74,7 +74,35 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-$conn->close();
+
+
+echo'<ul class="sortable ui-sortable colomn" style="border-top: black solid 2px;">';
+$sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id AND info.sold = 'vendu' ORDER BY sort.display_order ASC ";
+
+$result = $conn->query($sql);
+$test = 0;
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      
+     echo'<li id="item-'.$row['id'].'" class="item">
+     <div class="imgwrap">
+     <img class="grey_sold" src="'.$row['img'].'">
+</div>
+     <div class="card-section">
+       <h5 class="limit-two-line">'.$row['adresse'].'</h5>
+       <h6>'.$row['prix'].'</h6>
+       <p><button class="button info" id="'.$row['user_id'].'" style="float:left" >Info</button></p>
+       <p><a href="add.php?action=edit&house_id='.$row['user_id'].'"style="float:right" class="button">Edit</a></p>
+     </div>
+  
+</li>';
+
+    }
+} else {
+    echo "0 results";
+}
+//$conn->close();
 ?>
 </ul>
 </div>

@@ -198,3 +198,34 @@ footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background:
 	font-size: 3em;
 	text-align: center;
   }
+
+  .limit-two-line{
+	font-size: 20px;
+    line-height: 1.5em;
+    height: 3.2em;
+    overflow: hidden;
+  }
+
+.imgwrap {
+    position:relative;
+    width:100%;
+    padding:80% 0 0;
+    overflow: hidden;
+    margin:10px;
+    /* display:inline-block; */
+}
+.imgwrap img {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.grey_sold{
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
