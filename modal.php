@@ -30,7 +30,7 @@ $id =$_POST['ID'];
   <tbody>
     <tr>
       <td>Lien</td>
-      <td><?php echo $info['link']; ?></td>
+      <td><a target="_blank" href='<?php echo $info['link']; ?>'><?php echo $info['link']; ?></a></td>
     </tr>
     <tr>
       <td>Chambre</td>

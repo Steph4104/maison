@@ -229,3 +229,10 @@ footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background:
 	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+	.modal-content {
+		width: 100%;
+	}
+}
