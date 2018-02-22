@@ -66,6 +66,11 @@ if($_FILES["fileToUpload"]){
     }
 }
 $inclusion = mysqli_real_escape_string($conn, $inclusion);
+$exclusion = mysqli_real_escape_string($conn, $exclusion);
+$pour = mysqli_real_escape_string($conn, $pour);
+$contre = mysqli_real_escape_string($conn, $contre);
+$comment = mysqli_real_escape_string($conn, $comment);
+$adresse = mysqli_real_escape_string($conn, $adresse);
    $sql = "INSERT INTO info_maison (link,chambre,prix,habitable,img,taxe_s,taxe_m,bain,autobus,adresse,year,inclusion,exclusion,pour,contre,autre,sold) VALUES ('$lien','$chambre','$prix','$habitable','$target_file','$taxe_s','$taxe_m','$bain','$autobus','$adresse','$year','$inclusion','$exclusion','$pour','$contre','$comment','dispo')";
 
     if ($conn->query($sql) === TRUE) {
