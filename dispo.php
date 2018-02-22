@@ -1,4 +1,5 @@
  <?php
+ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -17,7 +18,8 @@ $sql = "UPDATE info_maison SET sold = 'vendu'  WHERE id = '$id'";
 
     if ($conn->query($sql) === TRUE) {
         error_log("New record created successfully");
-        header('Location: add.php');
+        $_SESSION['success'] = 'vendu';
+        header('Location: index.php');
         
     } else {
         error_log( "Error: " . $sql . "<br>" . $conn->error);

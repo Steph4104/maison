@@ -1,4 +1,5 @@
  <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -89,7 +90,8 @@ $adresse = mysqli_real_escape_string($conn, $adresse);
 
     if ($conn->query($sql2) === TRUE) {
         error_log("New record created successfully");
-        header('Location: add.php');
+        $_SESSION['success'] = 'new_add';
+        header('Location: index.php');
     } else {
         error_log( "Error: " . $sql2 . "<br>" . $conn->error);
         echo "Error: " . $sql2 . "<br>" . $conn->error;
