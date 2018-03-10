@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
@@ -37,17 +38,9 @@
   </div>
   <div class="row small-up-2 medium-up-3 large-up-4">
   <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include 'database.php';
+
 echo'<ul id="sortable" class="sortable ui-sortable colomn">';
 $sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id AND info.sold = 'dispo' ORDER BY sort.display_order ASC ";
 
@@ -115,6 +108,8 @@ if ($result->num_rows > 0) {
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="js/foundation.js"> </script>
 <script src="js/app.js"> </script>
+<script src="js/notify.js"> </script>
+
 
 <script>
  $(document).ready(function () {
@@ -159,9 +154,28 @@ error: function (xhr, ajaxOptions, thrownError) {
       }
   });
 });
-
-
 });
-  </script>
+</script>
 
+<?php
+switch($_SESSION['success']){
+   case 'new_add':
+?><script>
+    $.notify("Ajout avec success", "success");
+</script><?php
+    $_SESSION['success'] = '' ; 
+    break;
+  case 'edit':
+?><script>
+    $.notify("Modifier sans problème", "success");
+</script><?php
+    $_SESSION['success'] = '' ; 
+    break;
+  case 'vendu':
+?><script>
+    $.notify("C'est plate, je l'aimais", "success");
+</script><?php
+    $_SESSION['success'] = '' ; 
+}
+?>
 </html>

@@ -1,12 +1,6 @@
 <?php
  
- $conn=mysqli_connect("localhost","root","","maison_sort");
- 
- // Check connection
- if (mysqli_connect_errno())
- {
- echo "Failed to connect to MySQL: " . mysqli_connect_error();
- }
+include 'database.php';
 
 // $_POST['item'] = $data;
 //error_log($data);

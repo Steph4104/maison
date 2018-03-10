@@ -1,15 +1,6 @@
  <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+ session_start();
+include 'database.php';
 
     $lien = ($_POST['lien']) ? $_POST['lien'] : 'N/A';
     $prix = ($_POST['prix']) ? $_POST['prix'] : 0;
@@ -18,7 +9,7 @@ if ($conn->connect_error) {
     $autobus = ($_POST['autobus']) ? $_POST['autobus'] : 0;
     $habitable = ($_POST['habitable']) ? $_POST['habitable'] : 0;
     $adresse = ($_POST['adresse']) ? $_POST['adresse'] : 'N/A';
-    $year = ($_POST['year']) ? $_POST['year'] : 'N/A';    
+    $year = ($_POST['year']) ? $_POST['year'] : 0;    
     $taxe_m = ($_POST['taxe_m']) ? $_POST['taxe_m'] : 0;    
     $taxe_s = ($_POST['taxe_s']) ? $_POST['taxe_s'] : 0;
     $inclusion = ($_POST['inclusion']) ? $_POST['inclusion'] : 'N/A';    
@@ -72,11 +63,18 @@ if($_FILES["fileToUpload"]['error'] != 4){ // File should always exit but error 
 }
 
 $inclusion = mysqli_real_escape_string($conn, $inclusion);
+$exclusion = mysqli_real_escape_string($conn, $exclusion);
+$pour = mysqli_real_escape_string($conn, $pour);
+$contre = mysqli_real_escape_string($conn, $contre);
+$comment = mysqli_real_escape_string($conn, $comment);
+$adresse = mysqli_real_escape_string($conn, $adresse);
+
    $sql = "UPDATE info_maison SET link = '$lien', prix = '$prix', chambre = '$chambre', bain = '$bain', autobus = '$autobus', adresse = '$adresse', year = '$year', habitable = '$habitable', taxe_m = '$taxe_m', taxe_s = '$taxe_m', inclusion = '$inclusion', exclusion = '$exclusion', pour = '$pour', contre = '$contre', autre = '$comment'  WHERE id = '$id'";
 
     if ($conn->query($sql) === TRUE) {
         error_log("New record created successfully");
-        header('Location: add.php');
+        $_SESSION['success'] = 'edit';
+        header('Location: index.php');
         
     } else {
         error_log( "Error: " . $sql . "<br>" . $conn->error);

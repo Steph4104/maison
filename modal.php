@@ -1,16 +1,6 @@
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include 'database.php'; 
 
 $id =$_POST['ID'];
 

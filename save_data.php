@@ -1,15 +1,6 @@
  <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+session_start();
+include 'database.php';
 
     $lien = ($_POST['lien']) ? $_POST['lien'] : 'N/A';
     $prix = ($_POST['prix']) ? $_POST['prix'] : 0;
@@ -66,6 +57,11 @@ if($_FILES["fileToUpload"]){
     }
 }
 $inclusion = mysqli_real_escape_string($conn, $inclusion);
+$exclusion = mysqli_real_escape_string($conn, $exclusion);
+$pour = mysqli_real_escape_string($conn, $pour);
+$contre = mysqli_real_escape_string($conn, $contre);
+$comment = mysqli_real_escape_string($conn, $comment);
+$adresse = mysqli_real_escape_string($conn, $adresse);
    $sql = "INSERT INTO info_maison (link,chambre,prix,habitable,img,taxe_s,taxe_m,bain,autobus,adresse,year,inclusion,exclusion,pour,contre,autre,sold) VALUES ('$lien','$chambre','$prix','$habitable','$target_file','$taxe_s','$taxe_m','$bain','$autobus','$adresse','$year','$inclusion','$exclusion','$pour','$contre','$comment','dispo')";
 
     if ($conn->query($sql) === TRUE) {
@@ -84,7 +80,8 @@ $inclusion = mysqli_real_escape_string($conn, $inclusion);
 
     if ($conn->query($sql2) === TRUE) {
         error_log("New record created successfully");
-        header('Location: add.php');
+        $_SESSION['success'] = 'new_add';
+        header('Location: index.php');
     } else {
         error_log( "Error: " . $sql2 . "<br>" . $conn->error);
         echo "Error: " . $sql2 . "<br>" . $conn->error;
