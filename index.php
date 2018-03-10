@@ -158,6 +158,10 @@ error: function (xhr, ajaxOptions, thrownError) {
 </script>
 
 <?php
+if(!$_SESSION['success']){
+  $_SESSION['success']='';
+}
+
 switch($_SESSION['success']){
    case 'new_add':
 ?><script>

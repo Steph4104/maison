@@ -41,7 +41,7 @@ if(isset($_GET['action'])){
 }else{
   $action = 'save_data.php';
 }
-
+if(isset($_GET['house_id'])){
 include 'database.php';
   
   $id =$_GET['house_id'];
