@@ -38,7 +38,7 @@
   </div>
   <div class="row small-up-2 medium-up-3 large-up-4">
   <?php
-  echo $_SESSION['success'];
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -170,13 +170,13 @@ error: function (xhr, ajaxOptions, thrownError) {
 switch($_SESSION['success']){
    case 'new_add':
 ?><script>
-    $.notify("Ajout avec success", "success");
+    $.notify("Ajouté avec succès", "success");
 </script><?php
     $_SESSION['success'] = '' ; 
     break;
   case 'edit':
 ?><script>
-    $.notify("Modifier sans problème", "success");
+    $.notify("Modifié sans problème", "success");
 </script><?php
     $_SESSION['success'] = '' ; 
     break;
