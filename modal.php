@@ -1,16 +1,6 @@
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include 'database.php'; 
 
 $id =$_POST['ID'];
 
@@ -53,7 +43,7 @@ $id =$_POST['ID'];
       <td><?php echo $info['year']; ?></td>
     </tr>
     <tr>
-      <td>taxe_s</td>
+      <td>Taxes scolaires</td>
       <td><?php echo $info['taxe_s']; ?></td>
     </tr>
     <tr>
@@ -61,11 +51,11 @@ $id =$_POST['ID'];
       <td><?php echo $info['taxe_m']; ?></td>
     </tr>
     <tr>
-      <td>autobus</td>
+      <td>Temps en autobus</td>
       <td><?php echo $info['autobus']; ?></td>
     </tr>
     <tr>
-      <td>adresse</td>
+      <td>Adresse</td>
       <td><?php echo $info['adresse']; ?></td>
     </tr>
     <tr>
@@ -73,19 +63,19 @@ $id =$_POST['ID'];
       <td><?php echo $info['inclusion']; ?></td>
     </tr>
     <tr>
-      <td>exclusion</td>
+      <td>Exclusion</td>
       <td><?php echo $info['exclusion']; ?></td>
     </tr>
     <tr>
-      <td>pour</td>
+      <td>Pour</td>
       <td><?php echo $info['pour']; ?></td>
     </tr>
     <tr>
-      <td>contre</td>
+      <td>Contre</td>
       <td><?php echo $info['contre']; ?></td>
     </tr>
     <tr>
-      <td>autre</td>
+      <td>Commentaires</td>
       <td><?php echo $info['autre']; ?></td>
     </tr>
   </tbody>
