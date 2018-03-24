@@ -236,3 +236,7 @@ footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background:
 		width: 100%;
 	}
 }
+
+.positionfix{
+    position:fixed;
+}

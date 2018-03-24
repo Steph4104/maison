@@ -7,7 +7,14 @@ var closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
+    $('body').addClass('positionfix');
 }
+$(document).ready(function() {
+$(".close-button").click(function(){
+    $("body").removeClass('positionfix');
+    console.log('click');
+ });
+});
 
 function windowOnClick(event) {
     if (event.target === modal) {
