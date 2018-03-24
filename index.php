@@ -39,22 +39,8 @@
   <div class="row small-up-2 medium-up-3 large-up-4">
   <?php
 
-<<<<<<< HEAD
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maison_sort";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-=======
 include 'database.php';
 
->>>>>>> origin/master
 echo'<ul id="sortable" class="sortable ui-sortable colomn">';
 $sql = "SELECT * FROM info_maison AS info INNER JOIN sort_save AS sort ON info.id = sort.user_id AND info.sold = 'dispo' ORDER BY sort.display_order ASC ";
 
