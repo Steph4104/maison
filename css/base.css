@@ -68,7 +68,7 @@ header {width: 100%; float: left; padding: 175px 0; background:  url(../images/m
 *
 *  -------------------------- */
 ul.sortable {width: 100%; float: left; margin: 20px 0; list-style: none; position: relative !important;}
-ul.sortable li {height: 100%; float: left; border: 2px solid #fff; cursor: move;}
+ul.sortable li {height: 15%; float: left; border: 2px solid #fff; cursor: move;}
 ul.sortable li img {/*height: 100%;*/ float: left;}
 ul.sortable li.ui-sortable-helper {border-color: #3498db;}
 
@@ -116,21 +116,7 @@ a.download {display:inline-block; padding: 13px 22px; color: #fff; background: #
 *  -------------------------- */
 footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background: #e3e3e3; color: #aaa; font-family: 'Montserrat'; text-align: center; font-size: 12px;}
 
-.modal {
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 1000;
-  visibility: hidden;
-  opacity: 0;
-
-
-}
 .modal-content {
 	/* position: absolute;
 	top: 65%;

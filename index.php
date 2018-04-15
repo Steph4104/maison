@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/app.css">
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
   </head>
   <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
@@ -28,14 +29,21 @@
   </div>
 </div>
   <article class="grid-container">
-  <button class="trigger" style="display:none;">Click here to trigger the modal!</button>
-  <div class="modal">
-      <div class="modal-content">
-          <span class="close-button">&times;</span>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
           <p id='dynamic-content'> </p>
+          </div>
+        </div>
       </div>
-  </div>
+      </div>
   <div class="row small-up-2 medium-up-3 large-up-4">
   <?php
 
@@ -57,7 +65,7 @@ if ($result->num_rows > 0) {
      <div class="card-section">
        <h5 class="limit-two-line">'.$row['adresse'].'</h5>
        <h6>'.$row['prix'].'</h6>
-       <p><button class="button info" id="'.$row['user_id'].'" style="float:left" >Info</button></p>
+       <p><button data-target="#exampleModal" data-toggle="modal" class="button info" id="'.$row['user_id'].'" style="float:left" >Info</button></p>
        <p><a href="add.php?action=edit&house_id='.$row['user_id'].'"style="float:right" class="button">Edit</a></p>
      </div>
   
@@ -102,14 +110,15 @@ if ($result->num_rows > 0) {
   </article>
 
 </div>
+
+ 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- jQuery UI -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="js/foundation.js"> </script>
-<script src="js/app.js"> </script>
 <script src="js/notify.js"> </script>
-
+   <script src="js/bootstrap.min.js"></script>
 
 <script>
  $(document).ready(function () {
@@ -138,7 +147,7 @@ $.ajax({
         'ID': id
     },
   success: function(resp){
-    toggleModal();
+    $('#myModal').modal('show')
    // alert(resp);
     $('#dynamic-content').html(resp);
 
