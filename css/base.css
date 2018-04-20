@@ -221,8 +221,16 @@ footer {width: 100%; float: left; margin-top: 20px; padding: 35px 0; background:
 	.modal-content {
 		width: 100%;
 	}
+
+	ul.sortable li {height: 4%; float: left; border: 2px solid #fff; cursor: move;}
 }
 
 .positionfix{
     position:fixed;
 }
+
+.freezePage{
+	overflow: hidden;
+	height: 100%;
+	position: relative;
+  }
